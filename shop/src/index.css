@@ -4,6 +4,11 @@
     font-family: Plus Jakarta Sans;
     src: url("./../public/fonts/PlusJakartaSans-Regular.ttf");
 }
+
+@font-face {
+    font-family: Poppins;
+    src: url("./../public/fonts/Poppins-Regular.ttf");
+}
 body{
     background-color: rgba(248, 250, 252, 1);
     font-family: Plus Jakarta Sans, sans-serif;
