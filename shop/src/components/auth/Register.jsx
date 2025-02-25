@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
-import { Link } from "react-router"
+import { Link } from "react-router-dom"; 
 import { yupResolver } from "@hookform/resolvers/yup"
 import { AiOutlineSwapRight } from "react-icons/ai";
 import { Client } from "../../../lib/axois"
