@@ -16,7 +16,10 @@ export default function Login() {
 
   const submitForm = async (user) => {
     try {
-      const response = await Client.post("/auth/local", user)
+      const response = await Client.post("/auth/local", {
+        email: user.email,
+        password: user.password
+      })
       localStorage.setItem("token", response.data.jwt)
     } catch (err) {
       console.log(err);
@@ -34,13 +37,13 @@ export default function Login() {
       </div>
       <form className="flex flex-col gap-5 mt-3 text-sm" onSubmit={handleSubmit(submitForm)}>
         <label htmlFor="email" className="text-[16px] font-[Poppins]">Email</label>
-        <input {...register("email")} type="email" name="email" id="email" placeholder="test1@gmail.com" className="rounded-sm bg-[#FFF6F4] py-[13px] pl-2.5 text-[#000000]" />
+        <input {...register("email")} type="email" id="email" placeholder="test1@gmail.com" className="rounded-sm bg-[#FFF6F4] py-[13px] pl-2.5 text-[#000000]" />
         {errors?.email ? (<span>{errors.email.message}</span>) : null}
         <div className="flex items-center justify-between">
           <label htmlFor="password" className="text-[16px] font-[Poppins]">Password</label>
           <Link to={"/login"}>Forgot Password ?</Link>
         </div>
-        <input {...register("password")} type="password" name="password" id="password" placeholder="**********" className="rounded-sm bg-[#FFF6F4] py-[13px] pl-2.5 text-[#000000]" />
+        <input {...register("password")} type="password" id="password" placeholder="**********" className="rounded-sm bg-[#FFF6F4] py-[13px] pl-2.5 text-[#000000]" />
         {errors?.password ? (<span>{errors.password.message}</span>) : null}
         <button className="flex items-center cursor-pointer mt-[30px] self-center bg-[#F47458] gap-[18px] text-[#FFFFFF] text-[16px] rounded-3xl py-[11px] px-[22px]" type="submit">
           Sing in
